@@ -11,5 +11,3 @@ To reproduce analyses, an additional folder "data" has to be downloaded from ZEN
 Software requirements
 
 The analysis code was written in R (v4.0.3.) Statistical models are fit using the Stan MCMC engine (v2.32.6) and cmdstanr (v0.8.1) packages, which require a C++ compiler. Installation instructions are available at https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started and https://mc-stan.org/cmdstanr/articles/cmdstanr.html. See also the Stan user guide at https://mc-stan.org/users/documentation. All other required R packages can be found in "functions/library.R"
-
-Detailed package versions can be found in "session_info.txt".
