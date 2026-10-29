@@ -278,6 +278,18 @@ nomination_model_conf = readRDS("data/processed_data/model_fit/nomination_model/
 print(nomination_model_conf$summary(posterior::default_summary_measures()[1],quantiles = ~quantile(.,probs = c(0.025, 0.975)), variables = c("v_confidence")), n = 50)
 nomination_model_conf$code()
 
+# save models
+model_ind_success = readRDS("data/processed_data/spot_selection_success_prediction_catch.rds")
+model_ind_success_perc = readRDS("data/processed_data/spot_selection_success_prediction_perc.rds")
+model_ind_success_patch_leaving = readRDS("data/processed_data/patch_leaving_success_prediction_catch.rds")
+model_ind_success_perc_patch_leaving = readRDS("data/processed_data/patch_leaving_success_prediction_perc.rds")
+
+# summaries for tables
+summary(model_ind_success)
+summary(model_ind_success_perc)
+summary(model_ind_success_patch_leaving)
+summary(model_ind_success_perc_patch_leaving)
+
 
 ################################################################################
 # END
