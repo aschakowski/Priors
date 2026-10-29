@@ -63,7 +63,6 @@ prepare_stan_data_spot_selection <- function(){
                                 ecological_knowledge_distances,
                                 success_distances, 
                                 loss_distances, 
-                                roughness_distances,
                                 locality, 
                                 grainsize, 
                                 identifiers,
@@ -193,9 +192,6 @@ prepare_stan_data_spot_selection <- function(){
     }
     ecological_knowledge_feature = do.call(cbind, ecological_knowledge_feature)
     
-    # roughness feature
-    roughness_feature = roughness_distances
-    
     # number of alternative spots
     N_spots = nrow(social_distances[[1]])
     
@@ -227,7 +223,6 @@ prepare_stan_data_spot_selection <- function(){
                   Distances_successes = success_feature,
                   Distances_losses = loss_feature,
                   Distances_ecological_knowledge = ecological_knowledge_feature,
-                  Distances_roughness = roughness_feature,
                   confidence = confidence,
                   Locality = locality_feature,
                   Time_since_start = time_since_start_normalized,
@@ -261,7 +256,6 @@ prepare_stan_data_spot_selection <- function(){
   loss_distances = readRDS(file = "data/processed_data/loss_distance_matrix.rds")
   locality = readRDS(file = "data/processed_data/locality_matrix.rds")
   ecological_knowledge_distances = readRDS(file = "data/processed_data/knowledge_distance_matrix.rds")
-  roughness_distances = readRDS(file = "data/processed_data/roughness_distance_matrix.rds")
   confidence_matrix = readRDS(file = "data/processed_data/confidence_matrix.rds")
   
   # filter out first spots
@@ -270,15 +264,14 @@ prepare_stan_data_spot_selection <- function(){
   loss_distances = loss_distances[identifiers$spot_id > 1]
   locality = locality[identifiers$spot_id > 1]
   ecological_knowledge_distances = ecological_knowledge_distances[identifiers$spot_id > 1]
-  roughness_distances = roughness_distances[,identifiers$spot_id > 1]
   confidence_matrix = confidence_matrix[, identifiers$spot_id > 1]
+  confidence_matrix[is.na(confidence_matrix)] <- -99
   
   # compute feature matrix
   data_list = prepare_stan_data(social_distances = social_distances,
                                 ecological_knowledge_distances = ecological_knowledge_distances,
                                 success_distances = success_distances,
                                 loss_distances = loss_distances,
-                                roughness_distances = roughness_distances,
                                 locality = locality, 
                                 grainsize = 1, 
                                 identifiers = identifiers, 
@@ -290,7 +283,6 @@ prepare_stan_data_spot_selection <- function(){
   data_list$Distances_success[data_list$Distances_success == 0] <- .01
   data_list$Distances_loss[data_list$Distances_loss == 0] <- .01
   data_list$Locality[data_list$Locality == 0] <- .01
-  data_list$Distances_roughness[data_list$Distances_roughness == 0] <- 0.01
   data_list$Distances_ecological_knowledge[data_list$Distances_ecological_knowledge == 0] <- 0.01
   data_list$confidence[is.na(data_list$confidence)]<- -99
   saveRDS(data_list, file = "data/processed_data/stan_data_spot_selection.rds")
@@ -309,7 +301,6 @@ prepare_stan_data_spot_selection <- function(){
   loss_distances = readRDS(file = "data/processed_data/loss_distance_matrix.rds")
   locality = readRDS(file = "data/processed_data/locality_matrix.rds")
   ecological_knowledge_distances = readRDS(file = "data/processed_data/knowledge_distance_matrix.rds")
-  roughness_distances = readRDS(file = "data/processed_data/roughness_distance_matrix.rds")
   confidence_matrix = readRDS(file = "data/processed_data/confidence_matrix.rds")
   
   # compute feature matrix
@@ -317,7 +308,6 @@ prepare_stan_data_spot_selection <- function(){
                                 ecological_knowledge_distances = ecological_knowledge_distances,
                                 success_distances = success_distances,
                                 loss_distances = loss_distances,
-                                roughness_distances = roughness_distances,
                                 locality = locality, 
                                 grainsize = 1, 
                                 identifiers = identifiers, 
@@ -330,7 +320,6 @@ prepare_stan_data_spot_selection <- function(){
   data_list$Distances_success[data_list$Distances_success == 0] <- .01
   data_list$Distances_loss[data_list$Distances_loss == 0] <- .01
   data_list$Locality[data_list$Locality == 0] <- .01
-  data_list$Distances_roughness[data_list$Distances_roughness == 0] <- .01
   data_list$Distances_ecological_knowledge[data_list$Distances_ecological_knowledge == 0] <- 0.01
   data_list$confidence[is.na(data_list$confidence)]<- -99
   saveRDS(data_list, file = "data/processed_data/stan_data_spot_selection_first_spots.rds")

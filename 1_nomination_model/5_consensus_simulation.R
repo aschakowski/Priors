@@ -524,11 +524,11 @@ estimate_consensus <- function(){
     layout_matrix = t(matrix(1:35, ncol = 5))
   )
   
-  ggsave(panel_simulations, file = "6_plots/panel_simulations.png", 
+  ggsave(panel_simulations, file = "5_plots/panel_simulations.png", 
          width = 18, height = 15, bg = "white", dpi = 300, units = "cm")
-  ggsave(panel_simulations, file = "6_plots/panel_simulations.pdf", 
+  ggsave(panel_simulations, file = "5_plots/panel_simulations.pdf", 
          width = 18, height = 15, bg = "white", dpi = 300, units = "cm")
-  ggsave(panel_simulations, file = "6_plots/panel_simulations.svg", 
+  ggsave(panel_simulations, file = "5_plots/panel_simulations.svg", 
          width = 18, height = 15, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
 
 }

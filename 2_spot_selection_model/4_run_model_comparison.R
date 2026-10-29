@@ -104,7 +104,6 @@ run_model_comparison_spot_selection <- function(){
                 stan_seed = stan_seed)
       
     } else {
-    
       
       stan_data = readRDS(file = "data/processed_data/stan_data_spot_selection.rds")
       
@@ -112,7 +111,7 @@ run_model_comparison_spot_selection <- function(){
       model_fit(model_location = model_locations[i],
                 save_location = save_locations[i],
                 data_list = stan_data,
-                warmup = 1000,
+                warmup = 2000,
                 iterations = 2000,
                 chains = 4,
                 fixed_param = F,

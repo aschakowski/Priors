@@ -113,34 +113,6 @@ success_model_coll = brms::brm(data = spot_selection_data,
 
 saveRDS(success_model_coll, file = "data/processed_data/success_model_coll.rds")
 
-# Confidence model
-spot_selection_data$confidence_closest_individual = as.factor(spot_selection_data$confidence_closest_individual)
-success_model_ind_confidence = brms::brm(data = spot_selection_data,
-                              formula = bf(total_catch ~ contained_individual*confidence_closest_individual + 
-                                             (1+contained_individual*confidence_closest_individual|day) + 
-                                             (1+contained_individual*confidence_closest_individual|participant_id) + 
-                                             (1+contained_individual*confidence_closest_individual|track_id),
-                                           zi ~ contained_individual*confidence_closest_individual + 
-                                             (1+contained_individual*confidence_closest_individual|day) + 
-                                             (1+contained_individual*confidence_closest_individual|participant_id) + 
-                                             (1+contained_individual*confidence_closest_individual|track_id)),
-                              family = zero_inflated_poisson(),
-                              cores = 4, chains = 4,
-                              seed = stan_seed)
-saveRDS(success_model_ind_confidence, file = "data/processed_data/success_model_ind_conf.rds")
-
-success_model_collective_confidence = brms::brm(data = spot_selection_data,
-                          formula = bf(total_catch ~ n_contained_collective_conf1 + n_contained_collective_conf2 + n_contained_collective_conf3 + 
-                                         (1+n_contained_collective_conf1 + n_contained_collective_conf2 + n_contained_collective_conf3|participant_id) + 
-                                         (1+n_contained_collective_conf1 + n_contained_collective_conf2 + n_contained_collective_conf3|track_id),
-                                       zi ~ n_contained_collective_conf1 + n_contained_collective_conf2 + n_contained_collective_conf3 + 
-                                         (1+n_contained_collective_conf1 + n_contained_collective_conf2 + n_contained_collective_conf3|participant_id) + 
-                                         (1+n_contained_collective_conf1 + n_contained_collective_conf2 + n_contained_collective_conf3|track_id)),
-                          family = zero_inflated_poisson(),
-                          cores = 4, chains = 4,
-                          seed = stan_seed)
-saveRDS(success_model_collective_confidence, file = "data/processed_data/success_model_coll_conf.rds")
-
 # make visualization
 ind_parameters = success_model_ind %>% 
   spread_draws(b_zi_contained_individual, r_day__zi[day, name],
@@ -251,15 +223,14 @@ panel_success_model = gridExtra::arrangeGrob(
   layout_matrix = rbind(c(1, 2))
 )
 
-ggsave(panel_success_model, file = "6_plots/panel_success_model.png", 
+ggsave(panel_success_model, file = "5_plots/panel_success_model.png", 
        width = 12, height = 6, bg = "white", dpi = 600, units = "cm")
-ggsave(panel_success_model, file = "6_plots/panel_success_model.svg", 
+ggsave(panel_success_model, file = "5_plots/panel_success_model.svg", 
        width = 12, height = 6, bg = "white", dpi = 600, units = "cm")
-ggsave(panel_success_model, file = "6_plots/panel_success_model.pdf", 
+ggsave(panel_success_model, file = "5_plots/panel_success_model.pdf", 
        width = 12, height = 6, bg = "white", dpi = 600, units = "cm")
 
-# split by confidence
-
-
-################################################################################
 }
+################################################################################
+# END
+################################################################################

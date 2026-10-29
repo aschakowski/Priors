@@ -25,7 +25,6 @@ scene_im <- ggplot(mapping = aes(x = 1:max(dim(scene)), y = 1:max(dim(scene)))) 
   geom_point(alpha = 0) + 
   coord_fixed(ratio = 1, xlim = c(1, dim(scene)[2]),ylim = c(1, dim(scene)[1]), expand = 0) + 
   labs(tag = "A") + 
-  #ggtitle("Competition Scene")+
   theme(panel.background = element_rect(fill = NA),
         axis.title.x = element_blank(),
         axis.title.y = element_blank(),
@@ -49,7 +48,6 @@ map_im <- ggplot(mapping = aes(x = 1:max(dim(map)), y = 1:max(dim(map)))) +
   geom_point(alpha = 0) + 
   coord_fixed(ratio = 1, xlim = c(1, dim(map)[2]),ylim = c(1, dim(map)[1]), expand = 0) + 
   labs(tag = "B") + 
-  #ggtitle("Map Survey") +
   xlab("Longitude") +
   ylab("Latitude") +
   theme(panel.background = element_rect(fill = NA),
@@ -68,21 +66,18 @@ map_im <- ggplot(mapping = aes(x = 1:max(dim(map)), y = 1:max(dim(map)))) +
         text = element_text(family = "sans"))
 map_im
 
-# load example map
-
 # illustrate spot selection model
-# Step 2: Load competition areas
 competition_areas = readRDS("data/study_lakes.rds")
 depth_profiles = readRDS("data/depth_profiles.rds")
 
 # Visualize trips for illustration
 profile_transformed = st_transform(depth_profiles[[3]], "epsg:3067")
 
-ecological_knowledge_polygons %>% 
-  filter(day == 3) %>% 
-  filter(camera_id %in% c(39:44)) %>% 
-  ggplot(aes(fill = (camera_id))) + 
-  geom_sf(alpha = .3)
+#ecological_knowledge_polygons %>% 
+#  filter(day == 3) %>% 
+#  filter(camera_id %in% c(39:44)) %>% 
+#  ggplot(aes(fill = (camera_id))) + 
+#  geom_sf(alpha = .3)
 
 # select example trip
 spot_selection_data = fread(file = "data/spot_selection_data_cleaned.csv")
@@ -109,13 +104,9 @@ spots_ill = ggplot() +
            y = pull(spot_selection_data[spot_selection_data$track_id == trip_tmp & spot_selection_data$spot_id == 2, "y"]) + 70, label = "D")+
   annotate("text", x = pull(spot_selection_data[spot_selection_data$track_id == trip_tmp & spot_selection_data$spot_id == 58, "x"])+100, 
            y = pull(spot_selection_data[spot_selection_data$track_id == trip_tmp & spot_selection_data$spot_id == 58, "y"]) + 70, label = "E")+
-  #geom_point(data = spot_selection_data %>% filter(trip_id == 115) %>% filter(Return == 1), aes(x = x, y = y), color = "darkgreen", size = 2) + 
-  #geom_point(data = spot_selection_data %>% filter(trip_id == 115) %>% filter(Return == 0), aes(x = x, y = y), color = "lightgreen", size = 1) + 
-  #geom_point(data = spot_selection_data %>% filter(unique_trip_id == trip_tmp) %>% filter(spot_id == 1), aes(x = x, y = y), color = "black", shape = 4, size = 3) + 
   xlab("Longitude") + 
   ylab("Latitude") + 
   labs(tag = "C") +
-  #ggtitle("Spot Selection Model") +
   theme(panel.background = element_rect(fill = NA),
         axis.title.x = element_text(size = 7),
         axis.title.y = element_text(size = 7),
@@ -163,11 +154,6 @@ angling_sub_2 = patch_leaving_data %>%
   mutate(cumulative_r = cumsum(reward)) %>% 
   mutate(bin = bin - 1) %>% 
   mutate(bin = 10 * bin / 60)
-# load catch/start/leave pictures
-#start <- readPNG("utils/data/raw_data/plot_images/start.png")
-#catch1 <- readPNG("utils/data/raw_data/plot_images/catch1.png")
-#catch2 <- readPNG("utils/data/raw_data/plot_images/catch2.png")
-#leave <- readPNG("utils/data/raw_data/plot_images/leave.png")
 
 angling_1 = ggplot() + 
   geom_point(data = angling_sub %>% filter(reward == 1), aes(x = bin, y = cumulative_r)) + 
@@ -262,41 +248,12 @@ panel_illustrations_rq = gridExtra::arrangeGrob(
                         c(2, 3, 5))
 )
 
-ggsave(panel_illustrations_rq, file = "6_plots/panel_illustration_rq.png", 
+ggsave(panel_illustrations_rq, file = "5_plots/panel_illustration_rq.png", 
        width = 16, height = 8, bg = "white", dpi = 600, units = "cm")
-ggsave(panel_illustrations_rq, file = "6_plots/panel_illustration_rq.pdf", 
+ggsave(panel_illustrations_rq, file = "5_plots/panel_illustration_rq.pdf", 
        width = 16, height = 8, bg = "white", dpi = 600, units = "cm")
-ggsave(panel_illustrations_rq, file = "6_plots/panel_illustration_rq.svg", 
+ggsave(panel_illustrations_rq, file = "5_plots/panel_illustration_rq.svg", 
        width = 16, height = 8, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
-
-# descriptive data nominated areas
-#hist_nominations = ecological_knowledge_polygons %>% 
-#  filter(day %in% c(1, 2, 3, 4, 5)) %>% 
-#  group_by(camera_id, day) %>% 
-#  summarize(n = n()) %>% 
-#  ggplot(aes(x = n)) + 
-#  geom_histogram(width = 2) + 
-#  xlab("N nominated areas") +
-#  ylab("N participants") +
-#  scale_x_continuous(breaks = seq(from = 0, to = 10, by = 1)) + 
-#  facet_wrap(~day, nrow = 1) + 
-#  theme(panel.background = element_rect(fill = NA),
-#        axis.title.x = element_text(size = 7),
-#        axis.title.y = element_text(size = 7),
-#        axis.text.x = element_text(size = 5),
-#        axis.text.y = element_text(size = 5),
-#        panel.border = element_rect(colour = "black", fill=NA),
-#        legend.position = c(.8, .2),
-#        legend.text = element_text(size = 5),
-#        plot.tag = element_text(size = 7, face = "bold"),
-#        legend.title = element_blank(),
-#        legend.background = element_rect(colour = "black", fill = "white")) 
-#ggsave(hist_nominations, file = "6_plots/hist_nominations.png", 
-#       width = 18, height = 5, bg = "white", dpi = 300, units = "cm")
-#ggsave(hist_nominations, file = "6_plots/hist_nominations.pdf", 
-#       width = 18, height = 5, bg = "white", dpi = 300, units = "cm")
-#ggsave(hist_nominations, file = "6_plots/hist_nominations.svg", 
-#       width = 18, height = 5, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)#
 
 # supplementary figure: map extraction visualization
 left <- readPNG("data/figure1/visualization_filled_out_map.png")
@@ -371,11 +328,11 @@ panel_illustrations_process = gridExtra::arrangeGrob(
   layout_matrix = rbind(c(1, 2, 3))
 )
 
-ggsave(panel_illustrations_process, file = "6_plots/panel_illustrations_process.png", 
+ggsave(panel_illustrations_process, file = "5_plots/panel_illustrations_process.png", 
        width = 18, height = 6, bg = "white", dpi = 300, units = "cm")
-ggsave(panel_illustrations_process, file = "6_plots/panel_illustrations_process.pdf", 
+ggsave(panel_illustrations_process, file = "5_plots/panel_illustrations_process.pdf", 
        width = 18, height = 6, bg = "white", dpi = 300, units = "cm")
-ggsave(panel_illustrations_process, file = "6_plots/panel_illustrations_process.svg", 
+ggsave(panel_illustrations_process, file = "5_plots/panel_illustrations_process.svg", 
        width = 18, height = 6, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
 
 }

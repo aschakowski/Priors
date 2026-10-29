@@ -414,7 +414,7 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "Random"], .17), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "Random"], .83), ymin = 5.65, ymax = 6.35,
            alpha = 1,fill = "#31A354")+
   # .5
-  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "Random"], .5)-.00005, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "Random"], .5)+.00005, ymin = 5.65, ymax = 6.35,
+  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "Random"], .5)-.01, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "Random"], .5)+.01, ymin = 5.65, ymax = 6.35,
            alpha = 1,fill = "black") + 
   
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .025), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .975), ymin = 4.65, ymax = 5.35,
@@ -423,7 +423,7 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .17), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .83), ymin = 4.65, ymax = 5.35,
            alpha = 1,fill = "#31A354")+
   # .5
-  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .5)-.00005, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .5)+.00005, ymin = 4.65, ymax = 5.35,
+  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .5)-.01, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Displacement"], .5)+.01, ymin = 4.65, ymax = 5.35,
            alpha = 1,fill = "black") + 
   
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .025), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .975), ymin = 3.65, ymax = 4.35,
@@ -432,7 +432,7 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .17), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .83), ymin = 3.65, ymax = 4.35,
            alpha = 1,fill = "#31A354")+
   # .5
-  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .5)-.00005, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .5)+.00005, ymin = 3.65, ymax = 4.35,
+  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .5)-.01, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Boundary"], .5)+.01, ymin = 3.65, ymax = 4.35,
            alpha = 1,fill = "black") + 
   
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .025), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .975), ymin = 2.65, ymax = 3.35,
@@ -441,7 +441,7 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .17), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .83), ymin = 2.65, ymax = 3.35,
            alpha = 1,fill = "#31A354")+
   # .5
-  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .5)-.00005, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .5)+.00005, ymin = 2.65, ymax = 3.35,
+  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .5)-.01, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Depth"], .5)+.01, ymin = 2.65, ymax = 3.35,
            alpha = 1,fill = "black") + 
   
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .025), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .975), ymin = 1.65, ymax = 2.35,
@@ -450,7 +450,7 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .17), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .83), ymin = 1.65, ymax = 2.35,
            alpha = 1,fill = "#31A354")+
   # .5
-  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .5)-.00005, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .5)+.00005, ymin = 1.65, ymax = 2.35,
+  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .5)-.01, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Shore"], .5)+.01, ymin = 1.65, ymax = 2.35,
            alpha = 1,fill = "black") + 
   
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .025), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .975), ymin = 0.65, ymax = 1.35,
@@ -459,7 +459,7 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .17), xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .83), ymin = 0.65, ymax = 1.35,
            alpha = 1,fill = "#31A354")+
   # .5
-  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .5)-.00005, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .5)+.00005, ymin = 0.65, ymax = 1.35,
+  annotate("rect", xmin = quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .5)-.01, xmax =  quantile(plot_sim_main$consensus[plot_sim_main$model == "+Roughness"], .5)+.01, ymin = 0.65, ymax = 1.35,
            alpha = 1,fill = "black") + 
   
   
@@ -467,11 +467,11 @@ plot_d = plot_sim %>% filter(model != "Data") %>%
   geom_errorbar(data = plot_data_day, aes(y = 1, x = mean, xmin = lower, xmax = upper), width = .4, position = position_dodge(.8))+
   
   ggtitle("Shared Beliefs")+
-  coord_cartesian(xlim = c(0, 0.08))+
-  xlab("Consensus of prior beliefs\n(N intersections/sqm)")+
+  coord_cartesian(xlim = c(0, 8))+
+  xlab("Consensus of prior beliefs\n(N intersections/100sqm)")+
   ylab("Model")+
   labs(tag = "H")+
-  scale_x_continuous(breaks = seq(from = 0, to = 0.08, by = .02))+
+  scale_x_continuous(breaks = seq(from = 0, to = 8, by = 1))+
   theme(panel.background = element_rect(fill = NA),
         axis.title.x = element_text(size = 6),
         axis.title.y = element_blank(),
@@ -507,11 +507,11 @@ panel_figure_1 = gridExtra::arrangeGrob(
   #                      c(3, 3, 4, 4, 6, 6))
 )
 
-ggsave(panel_figure_1, file = "6_plots/panel_figure_1.png", 
+ggsave(panel_figure_1, file = "5_plots/panel_figure_1.png", 
        width = 18, height = 10, bg = "white", dpi = 600, units = "cm")
-ggsave(panel_figure_1, file = "6_plots/panel_figure_1.pdf", 
+ggsave(panel_figure_1, file = "5_plots/panel_figure_1.pdf", 
        width = 18, height = 10, bg = "white", dpi = 600, units = "cm")
-ggsave(panel_figure_1, file = "6_plots/panel_figure_1.svg", 
+ggsave(panel_figure_1, file = "5_plots/panel_figure_1.svg", 
        width = 18, height = 10, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
 
 ################################################################################
@@ -550,20 +550,20 @@ plot_s1_a = full_model %>%
         plot.margin=unit(c(.1, .2, .1, .2), "cm"))
 plot_s1_a
 
-ggsave(plot_s1_a, file = "6_plots/confidence_model_area_nomination.png", 
+ggsave(plot_s1_a, file = "5_plots/confidence_model_area_nomination.png", 
        width = 6, height = 6, bg = "white", dpi = 300, units = "cm")
-ggsave(plot_s1_a, file = "6_plots/confidence_model_area_nomination.pdf", 
+ggsave(plot_s1_a, file = "5_plots/confidence_model_area_nomination.pdf", 
        width = 6, height = 6, bg = "white", dpi = 300, units = "cm")
-ggsave(plot_s1_a, file = "6_plots/confidence_model_area_nomination.svg", 
+ggsave(plot_s1_a, file = "5_plots/confidence_model_area_nomination.svg", 
        width = 6, height = 6, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
 
 # model comparison
 plot_c
-ggsave(plot_c, file = "6_plots/model_comparison_area_nomination.png", 
+ggsave(plot_c, file = "5_plots/model_comparison_area_nomination.png", 
        width = 6, height = 6, bg = "white", dpi = 300, units = "cm")
-ggsave(plot_c, file = "6_plots/model_comparison_area_nomination.pdf", 
+ggsave(plot_c, file = "5_plots/model_comparison_area_nomination.pdf", 
        width = 6, height = 6, bg = "white", dpi = 300, units = "cm")
-ggsave(plot_c, file = "6_plots/model_comparison_area_nomination.svg", 
+ggsave(plot_c, file = "5_plots/model_comparison_area_nomination.svg", 
        width = 6, height = 6, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
 
 ################################################################################
@@ -595,11 +595,11 @@ hist_n = ecological_knowledge_polygons %>%
         legend.title = element_text(size = 3, margin=margin(0,0,0,0)),
         legend.background = element_rect(colour = "black", fill = "white"),
         plot.margin=unit(c(.1, .2, .1, .2), "cm"))
-ggsave(hist_n, file = "6_plots/hist_nominated_areas.png", 
+ggsave(hist_n, file = "5_plots/hist_nominated_areas.png", 
        width = 18, height = 5, bg = "white", dpi = 300, units = "cm")
-ggsave(hist_n, file = "6_plots/hist_nominated_areas.svg", 
+ggsave(hist_n, file = "5_plots/hist_nominated_areas.svg", 
        width = 18, height = 5, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
-ggsave(hist_n, file = "6_plots/hist_nominated_areas.pdf", 
+ggsave(hist_n, file = "5_plots/hist_nominated_areas.pdf", 
        width = 18, height = 5, bg = "white", dpi = 300, units = "cm")
 
 }

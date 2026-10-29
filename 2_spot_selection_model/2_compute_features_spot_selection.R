@@ -303,28 +303,6 @@ extract_features <- function(){
   rm(confidence_matrix)
   gc()
   
-  ##############################################################################
-  # extract roughness feature
-  ##############################################################################
-  # Import Lake Data
-  lake_data = readRDS("data/depth_profiles.rds")
-  
-  # depth profile points
-  depth_profile_points = list()
-  for (i in 1:5){
-    tmp = st_line_sample(lake_data[[i]] %>% filter(depth>0), density = .1, type = "regular")
-    depth_profile_points[[i]] = tmp[!st_is_empty(tmp)] %>% st_cast("POINT")
-  }
-  
-  # extract feature
-  roughness_distance_matrix = map(Feature_matrix, function(x) extract_roughness(x, depth_profile_points), .progress = TRUE)
-  roughness_distance_matrix = do.call(cbind, roughness_distance_matrix)
-  
-  # save result
-  saveRDS(roughness_distance_matrix, file = "data/processed_data/roughness_distance_matrix.rds")
-  rm(roughness_distance_matrix)
-  gc()
-  
 }
 
 ################################################################################

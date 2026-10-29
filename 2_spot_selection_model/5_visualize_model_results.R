@@ -316,11 +316,11 @@ visualize_model_results <- function(){
           legend.background = element_rect(colour = "white", fill = "white"),
           text = element_text(family = "sans"))
   comparison_spot_selection
-  ggsave(comparison_spot_selection, file = "6_plots/comparison_spot_selection.png", 
+  ggsave(comparison_spot_selection, file = "5_plots/comparison_spot_selection.png", 
          width = 6, height = 7, bg = "white", dpi = 600, units = "cm")
-  ggsave(comparison_spot_selection, file = "6_plots/comparison_spot_selection.pdf", 
+  ggsave(comparison_spot_selection, file = "5_plots/comparison_spot_selection.pdf", 
          width = 6, height = 7, bg = "white", dpi = 600, units = "cm")
-  ggsave(comparison_spot_selection, file = "6_plots/comparison_spot_selection.svg", 
+  ggsave(comparison_spot_selection, file = "5_plots/comparison_spot_selection.svg", 
          width = 6, height = 7, bg = "white", dpi = 600, units = "cm")
   
   
@@ -334,7 +334,6 @@ visualize_model_results <- function(){
   table(ecological_knowledge_polygons$confidence)
   plot_s1_b = conf_model %>% 
     spread_draws(weights[parameter]) %>%
-    filter(.chain != 4) %>% 
     filter(parameter %in% c(5, 6, 7)) %>% 
     mutate(weights = -weights) %>% 
     mutate(parameter = ifelse(parameter == 5, "Likely", ifelse(parameter == 6, "Very Likely", "Definitely"))) %>% 
@@ -367,7 +366,6 @@ visualize_model_results <- function(){
   # contrasts of confidence model
   contrasts = conf_model %>% 
     spread_draws(weights[parameter]) %>% 
-    filter(.chain != 4) %>% 
     mutate(weights = -weights) %>% 
     filter(parameter %in% c(5, 6, 7)) %>% 
     mutate(parameter = ifelse(parameter == 5, "Likely", ifelse(parameter == 6, "Very Likely", "Definitely"))) %>% 
@@ -409,11 +407,11 @@ visualize_model_results <- function(){
     widths = c(1, 1),
     layout_matrix = rbind(c(1,2))
   )
-  ggsave(panel_conf, file = "6_plots/plot_confidence_spatial.png", 
+  ggsave(panel_conf, file = "5_plots/plot_confidence_spatial.png", 
          width = 12, height = 6, bg = "white", dpi = 300, units = "cm")
-  ggsave(panel_conf, file = "6_plots/plot_confidence_spatial.pdf", 
+  ggsave(panel_conf, file = "5_plots/plot_confidence_spatial.pdf", 
          width = 12, height = 6, bg = "white", dpi = 300, units = "cm")
-  ggsave(panel_conf, file = "6_plots/plot_confidence_spatial.svg", 
+  ggsave(panel_conf, file = "5_plots/plot_confidence_spatial.svg", 
          width = 12, height = 6, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
   
   ##############################################################################
@@ -583,11 +581,11 @@ visualize_model_results <- function(){
     layout_matrix = rbind(c(1,2))
   )
   
-  ggsave(panel_area, file = "6_plots/panel_area.png", 
+  ggsave(panel_area, file = "5_plots/panel_area.png", 
          width = 12, height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_area, file = "6_plots/panel_area.pdf", 
+  ggsave(panel_area, file = "5_plots/panel_area.pdf", 
          width = 12, height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_area, file = "6_plots/panel_area.svg", 
+  ggsave(panel_area, file = "5_plots/panel_area.svg", 
          width = 12, height = 6, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
   
   ################################################################################
@@ -790,8 +788,6 @@ visualize_model_results <- function(){
     ggdraw() +
     draw_plot(ex2) +
     draw_plot(ex4, x = 0.5625, y = .625, width = .35, height = .35)
-  #ggsave(plot.with.inset, file = "6_plots/panel_illustration_test.png", 
-  #       width = 12, height = 12, bg = "white", dpi = 300, units = "cm")
   
   # make panel
   # panel
@@ -805,11 +801,11 @@ visualize_model_results <- function(){
                           c(3, 4))
   )
   
-  ggsave(panel_illustrations, file = "6_plots/panel_illustration.png", 
+  ggsave(panel_illustrations, file = "5_plots/panel_illustration.png", 
          width = 12, height = 12, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_illustrations, file = "6_plots/panel_illustration.pdf", 
+  ggsave(panel_illustrations, file = "5_plots/panel_illustration.pdf", 
          width = 12, height = 12, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_illustrations, file = "6_plots/panel_illustration.svg", 
+  ggsave(panel_illustrations, file = "5_plots/panel_illustration.svg", 
          width = 12, height = 12, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
   
   # posterior correlation
@@ -876,11 +872,11 @@ visualize_model_results <- function(){
     layout_matrix = matrix(1:16, nrow = 4, ncol = 4)
   )
   
-  ggsave(panel_random_ex, file = "6_plots/panel_random_ex.png", 
+  ggsave(panel_random_ex, file = "5_plots/panel_random_ex.png", 
          width = 16, height = 18, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_random_ex, file = "6_plots/panel_random_ex.pdf", 
+  ggsave(panel_random_ex, file = "5_plots/panel_random_ex.pdf", 
          width = 16, height = 18, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_random_ex, file = "6_plots/panel_random_ex.svg", 
+  ggsave(panel_random_ex, file = "5_plots/panel_random_ex.svg", 
          width = 16, height = 18, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
   
   ################################################################################
@@ -956,11 +952,11 @@ visualize_model_results <- function(){
           legend.background = element_rect(colour = "white", fill = "white"),
           text = element_text(family = "sans"))
   plot_posterior_zoi
-  ggsave(plot_posterior_zoi, file = "6_plots/model_validation.png", 
+  ggsave(plot_posterior_zoi, file = "5_plots/model_validation.png", 
          width = 6, height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(plot_posterior_zoi, file = "6_plots/model_validation.pdf", 
+  ggsave(plot_posterior_zoi, file = "5_plots/model_validation.pdf", 
          width = 6, height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(plot_posterior_zoi, file = "6_plots/model_validation.svg", 
+  ggsave(plot_posterior_zoi, file = "5_plots/model_validation.svg", 
          width = 6, height = 6, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
   
   ################################################################################
@@ -1161,11 +1157,11 @@ visualize_model_results <- function(){
     layout_matrix = rbind(c(1, 2, 3))
   )
   
-  ggsave(panel_descriptive_confidence, file = "6_plots/panel_descriptive_confidence.png", 
+  ggsave(panel_descriptive_confidence, file = "5_plots/panel_descriptive_confidence.png", 
          width = 18, height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_descriptive_confidence, file = "6_plots/panel_descriptive_confidence.pdf", 
+  ggsave(panel_descriptive_confidence, file = "5_plots/panel_descriptive_confidence.pdf", 
          width = 18, height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_descriptive_confidence, file = "6_plots/panel_descriptive_confidence.svg", 
+  ggsave(panel_descriptive_confidence, file = "5_plots/panel_descriptive_confidence.svg", 
          width = 18, height = 6, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
   
   # prior depending on navigational uncertainty
@@ -1474,11 +1470,11 @@ visualize_model_results <- function(){
                          c(4, 5, 6))
  )
 
- ggsave(panel_descriptive_confidence_lines, file = "6_plots/panel_descriptive_confidence_lines.png", 
+ ggsave(panel_descriptive_confidence_lines, file = "5_plots/panel_descriptive_confidence_lines.png", 
         width = 18, height = 12, bg = "white", dpi = 600, units = "cm")
- ggsave(panel_descriptive_confidence_lines, file = "6_plots/panel_descriptive_confidence_lines.pdf", 
+ ggsave(panel_descriptive_confidence_lines, file = "5_plots/panel_descriptive_confidence_lines.pdf", 
         width = 18, height = 12, bg = "white", dpi = 600, units = "cm")
- ggsave(panel_descriptive_confidence_lines, file = "6_plots/panel_descriptive_confidence_lines.svg", 
+ ggsave(panel_descriptive_confidence_lines, file = "5_plots/panel_descriptive_confidence_lines.svg", 
         width = 18, height = 12, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
  
   ################################################################################ 
@@ -1496,11 +1492,11 @@ visualize_model_results <- function(){
                           c(4, 5, 6))
   )
   
-  ggsave(panel_model_results, file = "6_plots/panel_spatial_results.png", 
+  ggsave(panel_model_results, file = "5_plots/panel_spatial_results.png", 
          width = 18, height = 12, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_model_results, file = "6_plots/panel_spatial_results.pdf", 
+  ggsave(panel_model_results, file = "5_plots/panel_spatial_results.pdf", 
          width = 18, height = 12, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_model_results, file = "6_plots/panel_spatial_results.svg", 
+  ggsave(panel_model_results, file = "5_plots/panel_spatial_results.svg", 
          width = 18, height = 12, bg = "white", dpi = 600, units = "cm", device = svglite::svglite)
   
 }

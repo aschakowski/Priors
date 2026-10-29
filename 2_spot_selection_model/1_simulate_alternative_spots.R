@@ -169,11 +169,11 @@ simulate_alternative_spots <- function(){
     layout_matrix = matrix(1:2, nrow = 1, ncol = 2)
   )
   
-  ggsave(panel_distributions, file = "6_plots/panel_distributions.png", 
+  ggsave(panel_distributions, file = "5_plots/panel_distributions.png", 
          width = 9, height = 5, bg = "white", dpi = 1200, units = "cm")
-  ggsave(panel_distributions, file = "6_plots/panel_distributions.svg", 
+  ggsave(panel_distributions, file = "5_plots/panel_distributions.svg", 
          width = 9, height = 5, bg = "white", dpi = 1200, units = "cm")
-  ggsave(panel_distributions, file = "6_plots/panel_distributions.pdf", 
+  ggsave(panel_distributions, file = "5_plots/panel_distributions.pdf", 
          width = 9, height = 5, bg = "white", dpi = 1200, units = "cm")
   
   # start sim

@@ -537,11 +537,6 @@ POLYGONS = do.call(rbind, POLYGONS)
 # gc
 gc()
 
-# remove confusing label and cluster variables.
-# nomination counts number of areas per id
-#POLYGONS$nomination = POLYGONS$clusters
-#POLYGONS = POLYGONS %>% dplyr::select(-label, -clusters)
-
 # set coordinate reference system
 st_crs(POLYGONS) <-"epsg:3067"
 saveRDS(POLYGONS, "data/ecological_knowledge_polygons.rds")
