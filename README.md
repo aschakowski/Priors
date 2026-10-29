@@ -4,7 +4,7 @@ Schakowski, A., Deffner, D., Kortet, R., Niemelä, P.T., Kavelaars, M.M., Pykäl
 
 Paper here: link to preprint
 
-To reproduce analyses, an additional folder "utils" has to be downloaded from ZENODO (LINK), and its subfolder have to be placed into the same working directory as the remaining folders.
+To reproduce analyses, an additional folder "data" has to be downloaded from ZENODO (10.5281/zenodo.23769205), and it has to be placed into the same working directory as the remaining folders.
 
 "wrapper_script_ecological_knowledge.r" sources all helper scripts and runs analyses. Scripts source raw data stored in "utils/data" and store processed data in the folder "utils/data/processed_data". 
 
