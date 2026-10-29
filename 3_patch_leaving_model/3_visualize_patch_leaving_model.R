@@ -76,13 +76,6 @@ visualize_patch_leaving <- function(){
     annotate("rect", xmin = (quantile(main_effects$`3`*6, .5))-0.005, xmax =  (quantile(main_effects$`3`*6, .5))+0.005, ymin = 1.65, ymax = 2.35,
              alpha = 1,fill = "black")+
     
-    #annotate("rect", xmin = (quantile(logit(1 - (1-inv_logit(main_effects$`1`))^6), .025)), xmax =  (quantile(logit(1 - (1-inv_logit(main_effects$`1`))^6), .925)), ymin = 2.65, ymax = 3.35,
-    #         alpha = 1,fill = "#BAE4B3")+
-    #annotate("rect", xmin = (quantile(logit(1 - (1-inv_logit(main_effects$`1`))^6), .17)), xmax =  (quantile(logit(1 - (1-inv_logit(main_effects$`1`))^6), .83)), ymin = 2.65, ymax = 3.35,
-    #         alpha = 1,fill = "#31A354")+
-    #annotate("rect", xmin = (quantile(logit(1 - (1-inv_logit(main_effects$`1`))^6), .49)), xmax =  (quantile(logit(1 - (1-inv_logit(main_effects$`1`))^6), .51)), ymin = 2.65, ymax = 3.35,
-    #         alpha = 1,fill = "black")+
-    
     annotate("rect", xmin = (quantile(main_effects$`1`, .025)), xmax =  (quantile(main_effects$`1`, .925)), ymin = 2.65, ymax = 3.35,
              alpha = 1,fill = "#BAE4B3")+
     annotate("rect", xmin = (quantile(main_effects$`1`, .17)), xmax =  (quantile(main_effects$`1`, .83)), ymin = 2.65, ymax = 3.35,
@@ -184,11 +177,11 @@ visualize_patch_leaving <- function(){
   )
   
   
-  ggsave(panel_tmp_results, file = "6_plots/panel_tmp_results.png", 
+  ggsave(panel_tmp_results, file = "5_plots/panel_tmp_results.png", 
          width = 12,height = 6, bg = "white", dpi = 600, units = "cm")
-  ggsave(panel_tmp_results, file = "6_plots/panel_tmp_results.svg", 
+  ggsave(panel_tmp_results, file = "5_plots/panel_tmp_results.svg", 
          width = 12,height = 6, bg = "white", dpi = 600, units = "cm", device = svglite::svglite())
-  ggsave(panel_tmp_results, file = "6_plots/panel_tmp_results.pdf", 
+  ggsave(panel_tmp_results, file = "5_plots/panel_tmp_results.pdf", 
          width = 12,height = 6, bg = "white", dpi = 600, units = "cm")
   
   gc()
@@ -225,13 +218,11 @@ visualize_patch_leaving <- function(){
           text = element_text(family = "sans"))
   model_comparison
   
-  ggsave(model_comparison, file = "6_plots/model_comparison_tmp.png", 
+  ggsave(model_comparison, file = "5_plots/model_comparison_tmp.png", 
          width = 7,height = 8, bg = "white", dpi = 300, units = "cm")
-  ggsave(model_comparison, file = "6_plots/model_comparison_tmp.svg", 
-         width = 7,height = 8, bg = "white", dpi = 300, units = "cm")
-  ggsave(model_comparison, file = "6_plots/model_comparison_tmp.pdf", 
-         width = 7,height = 8, bg = "white", dpi = 300, units = "cm")
-  ggsave(model_comparison, file = "6_plots/model_comparison_tmp.tiff", 
+  ggsave(model_comparison, file = "5_plots/model_comparison_tmp.svg", 
+         width = 7,height = 8, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
+  ggsave(model_comparison, file = "5_plots/model_comparison_tmp.pdf", 
          width = 7,height = 8, bg = "white", dpi = 300, units = "cm")
   
   ##############################################################################
@@ -314,11 +305,11 @@ visualize_patch_leaving <- function(){
     widths = c(1, 1),
     layout_matrix = rbind(c(1,2))
   )
-  ggsave(panel_conf, file = "6_plots/plot_confidence_tmp.png", 
+  ggsave(panel_conf, file = "5_plots/plot_confidence_tmp.png", 
          width = 12, height = 6, bg = "white", dpi = 300, units = "cm")
-  ggsave(panel_conf, file = "6_plots/plot_confidence_tmp.pdf", 
+  ggsave(panel_conf, file = "5_plots/plot_confidence_tmp.pdf", 
          width = 12, height = 6, bg = "white", dpi = 300, units = "cm")
-  ggsave(panel_conf, file = "6_plots/plot_confidence_tmp.svg", 
+  ggsave(panel_conf, file = "5_plots/plot_confidence_tmp.svg", 
          width = 12, height = 6, bg = "white", dpi = 300, units = "cm", device = svglite::svglite)
   
 }

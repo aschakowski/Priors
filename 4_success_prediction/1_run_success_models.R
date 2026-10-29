@@ -34,7 +34,7 @@ catch_results_trip = left_join(catch_results_trip, catch_data)
 # 1: Spot selection strategies and success
 ################################################################################
 # load model
-spot_selection_model_fit = readRDS("data/processed_data/model_fit/spot_selection_model/g_full_model_fit.rds")
+spot_selection_model_fit = readRDS("data/processed_data/model_fit/spot_selection_model/g_cond_social_fit.rds")
 
 # load parameters
 main_effects_spot_selection = spot_selection_model_fit %>% 
@@ -92,10 +92,10 @@ model_ind_success_perc =brms::brm(data = catch_results_trip,
                                     formula = brmsformula(perc_success ~ 1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 + 
                                                             (1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 | lake) + 
                                                             (1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 | id)
-                                                          , phi ~ 1,# The precision
+                                                          , phi ~ 1,
                                                           zi ~ 1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 + 
                                                             (1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 | lake) + 
-                                                            (1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 | id)),# The one-inflated part
+                                                            (1 + parameter_3 + parameter_4 + parameter_5 + parameter_6 | id)),
                                     family = zero_inflated_beta(),
                                     chains = 4,
                                     cores = 4)

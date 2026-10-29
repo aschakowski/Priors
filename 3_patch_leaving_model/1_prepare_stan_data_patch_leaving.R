@@ -118,15 +118,15 @@ prepare_stan_data_patch_leaving <- function(){
   sourceCpp("functions/fast_dist.cpp")
   
   # bandwidth estimates
-  spot_selection_fit = readRDS(file = "data/processed_data/model_fit/spot_selection_model/g_full_model_fit.rds")
+  spot_selection_fit = readRDS(file = "data/processed_data/model_fit/spot_selection_model/i_temporal_fit.rds")
   bandwidths = spot_selection_fit %>% 
     spread_draws(lambdas[feature]) %>% 
     group_by(feature) %>% 
     summarize(h = mean(lambdas))
   bandwidths_offset = spot_selection_fit %>% 
     spread_draws(v_lake[lake, feature]) %>% 
-    filter(feature %in% c(10, 11)) %>% 
-    mutate(feature = feature - 9) %>% 
+    filter(feature %in% c(14, 15)) %>% 
+    mutate(feature = feature - 13) %>% 
     group_by(lake, feature) %>% 
     summarize(offset = mean(v_lake))
   bandwidths = left_join(bandwidths, bandwidths_offset)
