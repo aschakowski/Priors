@@ -14,10 +14,10 @@
 # set working directory
 # on linux server
 if (Sys.info()[1] == "Linux"){
-  setwd("/mnt/home/schakowski/MPIB-SRT/1136-icefish/private/repo_upload_priors")
+  setwd("")
 } else {
   # on windows server
-  setwd("P:/IceFishing/repo_upload_priors")
+  setwd("")
 }
 
 # check
