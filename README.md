@@ -2,7 +2,7 @@ This repository contains the data and scripts necessary to reproduce all analyse
 
 Schakowski, A., Deffner, D., Kortet, R., Niemelä, P.T., Kavelaars, M.M., Pykälä, M., & Kurvers, R.H.J.M (preprint) Social foragers rely more on dynamic cues than prior beliefs in unpredictable natural environments.
 
-Paper here: link to preprint
+Paper here: https://doi.org/10.64898/2026.10.30.763071
 
 To reproduce analyses, an additional folder "data" has to be downloaded from ZENODO (10.5281/zenodo.23769205), and it has to be placed into the same working directory as the remaining folders.
 
